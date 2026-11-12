@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#1a1a1a" />
+  <link rel="icon" href="data:," />
+  <title>Hamburger Klabberjass</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Hamburger Klabberjass home"><span class="brand-mark">♠</span><span>KL<em>ABBER</em>JASS</span></a>
+      <div class="round-label"><span class="live-dot"></span><span id="roundLabel">ROUND 01</span><i></i><span id="phaseLabel">BIDDING</span></div>
+      <div class="header-actions">
+        <button class="icon-button" id="rulesButton" aria-label="Learn rules" title="Learn the rules">?<span class="tooltip">Learn rules</span></button>
+        <button class="icon-button" id="designButton" aria-label="Change card design" title="Change card design">▧<span class="tooltip">Card design</span></button>
+        <button class="icon-button" id="soundButton" aria-label="Toggle sound" title="Toggle sound">♫</button>
+      </div>
+    </header>
+
+    <section class="scorebar" aria-label="Team scores">
+      <div class="team-score us-score"><span class="score-icon">✦</span><span class="team-name">US</span><strong id="usScore">0</strong><span class="score-divider"></span><small id="usTricks">0 tricks</small></div>
+      <div class="score-center"><span>FIRST TO</span><strong>1000</strong></div>
+      <div class="team-score them-score"><span class="score-icon">✦</span><span class="team-name">THEM</span><strong id="themScore">0</strong><span class="score-divider"></span><small id="themTricks">0 tricks</small></div>
+    </section>
+
+    <section class="game-area" aria-label="Game table">
+      <div class="felt-shadow"></div>
+      <div class="table">
+        <div class="table-grain"></div>
+        <div class="seat seat-top" id="seat-2"></div>
+        <div class="seat seat-left" id="seat-1"></div>
+        <div class="seat seat-right" id="seat-3"></div>
+        <div class="center-play">
+          <div class="trump-indicator" id="trumpIndicator"><span class="trump-label">TRUMP</span><span id="trumpSuit">—</span></div>
+          <div class="trick-cards" id="trickCards"></div>
+          <div class="orgi-card" id="orgiCard"></div>
+          <div class="table-message" id="tableMessage"><span class="message-kicker">YOUR MOVE</span><strong id="messageText">Choose your bid</strong></div>
+        </div>
+        <div class="dealer-chip" id="dealerChip">DEALER</div>
+      </div>
+      <div class="player-area" id="seat-0">
+        <div class="player-meta"><div class="player-identity"><span class="avatar you-avatar">Y</span><div><strong>You</strong><small>North team <span class="team-dot us-dot"></span></small></div></div><div class="your-turn" id="yourTurn"><span></span> YOUR TURN</div></div>
+        <div class="hand-wrap"><div class="hand" id="playerHand" aria-label="Your hand"></div></div>
+      </div>
+    </section>
+
+    <section class="controls" id="controls" aria-label="Game actions"></section>
+    <footer class="bottom-bar"><span><span class="key-hint">TIP</span><span id="tipText">Follow suit whenever you can. Trump lives on the right.</span></span><button id="newGameButton" class="new-game">↻ <span>NEW GAME</span></button></footer>
+  </main>
+
+  <div class="modal-backdrop" id="modalBackdrop" hidden>
+    <section class="rules-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="closeModal" aria-label="Close">×</button>
+      <div class="modal-eyebrow">A QUICK GUIDE</div><h2 id="modalTitle">How to play<br><em>Klabberjass.</em></h2>
+      <div class="rules-tabs"><button class="active" data-tab="play">The game</button><button data-tab="cards">Card values</button><button data-tab="melds">Melds</button></div>
+      <div class="rules-content" id="rulesContent"></div>
+      <label class="learn-toggle"><input type="checkbox" id="learnToggle"><span class="toggle-ui"></span><span>Learn as I play <small>Show helpful hints during the game</small></span></label>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="game.js"></script>
+</body>
+</html>
